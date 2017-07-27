@@ -1,15 +1,15 @@
 const expect = require('chai').expect;
 
-expect(true).to.be.true;
-
-const movieTitle = 'a movie title theme goes here.';
-const titleResult = 'A movie Title Theme Goes Here.';
+const movieTitle = 'Some Sample Movie Title Goes Here.';
+const testTitle = 'some sample movie title goes here.';
 
 function titleCase(title) {
-  return title[0].toUpperCase() + title.substring(1);
+  return title.split(' ').map(word => {
+    return word[0].toUpperCase() + word.substring(1);
+  }).join(' ');
 }
 
-// expectations
-expect(titleCase(movieTitle)).to.be.a('string');
-expect(titleCase('a')).to.equal('A');
-expect(titleCase('vertigo')).to.equal('Vertigo');
+// expectations...
+expect(titleCase(testTitle)).to.be.a('string');
+expect(titleCase(testTitle[0])).to.equal(movieTitle[0]);
+expect(titleCase(testTitle)).to.be.equal(movieTitle); // final expectation.
